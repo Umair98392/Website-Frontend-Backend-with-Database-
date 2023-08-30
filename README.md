@@ -15,57 +15,62 @@ This README provides a comprehensive guide to setting up and running your websit
 ## PostgreSQL Database Installation (Ubuntu)
 
 1.Create the file repository configuration:
-
-```bash
-#sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-```
+    
+    ```bash
+    #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    ```
 2.Import the repository signing key:
-
-```bash
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-```
+    
+    ```bash
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    ```
 3.Update the package lists:
-
-```bash
-sudo apt-get update
-```
+    
+    ```bash
+    sudo apt-get update
+    ```
 4.Install the latest version of PostgreSQL:
-
-```bash
-sudo apt-get -y install postgresql
-```
+    
+    ```bash
+    sudo apt-get -y install postgresql
+    ```
 5.Start, stop, and check the status of the server:
-
-```bash
-sudo systemctl start postgresql
-```
-```bash
-sudo systemctl stop postgresql
-```
-```bash
-sudo systemctl status postgresql
-```
+    
+    ```bash
+    sudo systemctl start postgresql
+    ```
+    ```bash
+    sudo systemctl stop postgresql
+    ```
+    ```bash
+    sudo systemctl status postgresql
+    ```
 6.Access the PostgreSQL command-line interface:
-
-```bash
-sudo -u postgres psql
-```
+    
+    ```bash
+    sudo -u postgres psql
+    ```
 7.Create a new PostgreSQL user:
+    
+    ```bash
+    createuser --interactive --username=yourusername
+    ```
+    - To see the users: \du
+    - To see databases: \l
+    - To create a database: create database database_name
+    - To select a database to use: \c database_name
+    - To exit: \q
 
-```bash
-createuser --interactive --username=yourusername
-```
-# To see the users: \du
-# To see databases: \l
-# To create a database: create database database_name
-# To select a database to use: \c database_name
-# To exit: \q
+## pgadmin4 Installation (Ubuntu)
 
-pgadmin4 Installation (Ubuntu)
-Install the public key for the repository:
+1.Install the public key for the repository:
 
-ruby
-Copy code
+  ```bash
+  createuser --interactive --username=yourusername
+  ```
+
+1.
+
 curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
 Create the repository configuration file:
 
