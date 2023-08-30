@@ -1,4 +1,4 @@
-# Website_Project-Frontend-Backend-with-Database-
+# Frontend-Backend-with-Database
 
 This README provides a comprehensive guide to setting up and running your website project, including the installation of PostgreSQL, pgadmin4, FastAPI, and SQLAlchemy, as well as creating both the backend and frontend components of the website.
 
@@ -12,54 +12,57 @@ This README provides a comprehensive guide to setting up and running your websit
   - [Backend](#backend)
   - [Frontend](#frontend)
 
+
 ## PostgreSQL Database Installation (Ubuntu)
 
 1.Create the file repository configuration:
     
-    ```bash
-    #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-    ```
+   ```bash
+     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   ```
+ 
 2.Import the repository signing key:
     
-    ```bash
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    ```
+  ```bash
+     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+   ```
 3.Update the package lists:
     
-    ```bash
+   ```bash
     sudo apt-get update
-    ```
+  ```
 4.Install the latest version of PostgreSQL:
     
-    ```bash
+   ```bash
     sudo apt-get -y install postgresql
-    ```
+   ```
 5.Start, stop, and check the status of the server:
     
-    ```bash
+   ```bash
     sudo systemctl start postgresql
-    ```
-    ```bash
+   ```
+   ```bash
     sudo systemctl stop postgresql
-    ```
-    ```bash
+   ```
+   ```bash
     sudo systemctl status postgresql
-    ```
+   ```
 6.Access the PostgreSQL command-line interface:
     
-    ```bash
+   ```bash
     sudo -u postgres psql
-    ```
+   ```
 7.Create a new PostgreSQL user:
     
-    ```bash
+  ```bash
     createuser --interactive --username=yourusername
-    ```
-    - To see the users: \du
-    - To see databases: \l
-    - To create a database: create database database_name
-    - To select a database to use: \c database_name
-    - To exit: \q
+  ```
+  - To see the users: \du
+  - To see databases: \l
+  - To create a database: create database database_name
+  - To select a database to use: \c database_name
+  - To exit: \q
+
 
 ## pgadmin4 Installation (Ubuntu)
 
@@ -112,45 +115,58 @@ This README provides a comprehensive guide to setting up and running your websit
   ```bash
   pip install sqlalchemy
   ```
-## Creating the Website
 
-# Backend:
+# Creating the Website
 
-Follow these steps to create CRUD APIs for database operations:
+## Backend:
 
-Set up the file structure as described in the project directory.
+  Follow these steps to create CRUD APIs for database operations:
 
-Create SQLAlchemy parts in application/database.py.
+- Set up the file structure as described in the project directory.
 
-Define database models in application/models.py.
+        └── application
+                    ├── __init__.py
+                    ├── crud.py
+                    ├── database.py
+                    ├── main.py
+                    ├── models.py
+                    └── schemas.py
 
-Create Pydantic models in application/schemas.py.
+- Create SQLAlchemy parts in application/[database.py](database.py)
 
-Implement CRUD utilities in application/crud.py.
+- Define database models in application/[models.py](models.py)
 
-Create the main FastAPI app in application/main.py.
+- Create Pydantic models in application/[schemas.py](schemas.py)
 
-Run the app with Uvicorn:
+- Implement CRUD utilities in application/[crud.py](crud.py)
 
-lua
-Copy code
-uvicorn application.main:app --reload
-Access the interactive environment at http://127.0.0.1:8000/docs.
+- Create the main FastAPI app in application/[main.py](main.py)
 
-Frontend:
-Follow these steps to create webpages that interact with users and send data to APIs:
+- Run the app with Uvicorn:
+```bash
+  uvicorn application.main:app --reload
+```
+- Access the interactive environment at :
+```bash
+  http://127.0.0.1:8000/docs
+```
 
-Create HTML, CSS, and JavaScript files for the frontend components.
+## Frontend:
 
-Handle CORS (Cross-Origin Resource Sharing) appropriately in the backend (refer to application/main.py).
+  Follow these steps to create webpages that interact with users and send data to APIs:
 
-Run a local server to host your frontend:
+- Create HTML, CSS, and JavaScript files for the frontend components.
 
-yaml
-Copy code
-python3 -m http.server 8085
-Access the website in your browser at http://127.0.0.1:8085/.
+- Handle CORS (Cross-Origin Resource Sharing) appropriately in the backend (refer to application/main.py).
 
-The entered data will be stored in the database (use pgadmin4 to view the data).
+- Run a local server to host your frontend:
+```bash
+  python3 -m http.server 8085
+```
+- Access the website in your browser at :
+```bash
+  http://127.0.0.1:8085/
+```
+- The entered data will be stored in the database (use pgadmin4 to view the data).
 
 Feel free to adapt these instructions to your specific project structure and requirements. Good luck with your website project!
