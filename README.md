@@ -1,4 +1,4 @@
-# Frontend-Backend-with-Database
+# Website-Frontend-Backend-with-Database
 
 This README provides a comprehensive guide to setting up and running your website project, including the installation of PostgreSQL, pgadmin4, FastAPI, and SQLAlchemy, as well as creating both the backend and frontend components of the website.
 
