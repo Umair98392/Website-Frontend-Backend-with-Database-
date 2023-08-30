@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add-items-styles.css">
+    <title>Add Items</title>
+</head>
+<body>
+    <div class="add-items-container">
+        <h1>Suggest The Items</h1>
+        <form id="add-items-form">
+            <input class="item-title" name="title" type="text" placeholder="Title" required>
+            <input class="item-description" name="description" type="text" placeholder="Description" required>
+            <button class="add-button" type="submit">Add Item</button>
+        </form>
+        <div class="popup" id="popup">
+            <p>Item added successfully!</p>
+        </div>
+    </div>
+    <script src="add-items-script.js"></script>
+</body>
+</html>
