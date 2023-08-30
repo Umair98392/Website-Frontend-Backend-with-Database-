@@ -132,15 +132,17 @@ This README provides a comprehensive guide to setting up and running your websit
                     ├── models.py
                     └── schemas.py
 
-- Create SQLAlchemy parts in application/[database.py](database.py)
+- The file application/[__init__.py](application/__init__.py) is just an empty file, but it tells Python that  application with all its modules (Python files) is a package.
 
-- Define database models in application/[models.py](models.py)
+- Create SQLAlchemy parts in application/[database.py](application/database.py)
 
-- Create Pydantic models in application/[schemas.py](schemas.py)
+- Define database models in application/[models.py](application/models.py)
 
-- Implement CRUD utilities in application/[crud.py](crud.py)
+- Create Pydantic models in application/[schemas.py](application/schemas.py)
 
-- Create the main FastAPI app in application/[main.py](main.py)
+- Implement CRUD utilities in application/[crud.py](application/crud.py)
+
+- Create the main FastAPI app in application/[main.py](application/main.py)
 
 - Run the app with Uvicorn:
 ```bash
@@ -156,8 +158,18 @@ This README provides a comprehensive guide to setting up and running your websit
   Follow these steps to create webpages that interact with users and send data to APIs:
 
 - Create HTML, CSS, and JavaScript files for the frontend components.
+  - Let's refer to files
+    - [index.html](index.html)
+    - [login-styles.css](login-style.css)
+    - [login-script.js](login-script.js
+)
 
-- Handle CORS (Cross-Origin Resource Sharing) appropriately in the backend (refer to application/main.py).
+- CORS or "Cross-Origin Resource Sharing" refers to the situations when a frontend running in a browser has JavaScript code that communicates with a backend, and  the backend is in a different "origin"(port) than the frontend.(see [main.py](application/main.py) for this.)
+- Similarly refer to files
+  - [add-items.html](add-items.html)
+  - [add-items-styles.css](add-items-styles.css)
+  - [add-items-script.js](add-items-script.js)
+
 
 - Run a local server to host your frontend:
 ```bash
