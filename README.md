@@ -66,45 +66,56 @@ This README provides a comprehensive guide to setting up and running your websit
 1.Install the public key for the repository:
 
   ```bash
-  createuser --interactive --username=yourusername
+  curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+  ```
+2.Create the repository configuration file:
+
+  ```bash
+  sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+  ```
+3.Install pgadmin4:
+
+- For both desktop and web modes:
+  ```bash
+  sudo apt install pgadmin4
+  ```
+- For desktop mode only:
+  ```bash
+  sudo apt install pgadmin4-desktop
+  ```
+- For web mode only:
+  ```bash
+   sudo apt install pgadmin4-web
+  ```
+4.Configure the webserver (if using pgadmin4-web):
+  ```bash
+  sudo /usr/pgadmin4/bin/setup-web.sh
+  ```
+5.Open pgadmin4 and add a new server with hostname as "localhost".
+
+## FastAPI Installation (Ubuntu)
+
+1.Open the terminal and install FastAPI:
+
+  ```bash
+  pip install fastapi
+  ```
+2.Install the server on which FastAPI will run:
+
+  ```bash
+  pip install "uvicorn[standard]"
   ```
 
-1.
+## SQLAlchemy Installation (Ubuntu)
 
-curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
-Create the repository configuration file:
+1.Install SQLAlchemy:
+  ```bash
+  pip install sqlalchemy
+  ```
+## Creating the Website
 
-less
-Copy code
-sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
-Install pgadmin4:
+# Backend:
 
-For both desktop and web modes: sudo apt install pgadmin4
-For desktop mode only: sudo apt install pgadmin4-desktop
-For web mode only: sudo apt install pgadmin4-web
-Configure the webserver (if using pgadmin4-web):
-
-bash
-Copy code
-sudo /usr/pgadmin4/bin/setup-web.sh
-Open pgadmin4 and add a new server with hostname as "localhost".
-
-FastAPI Installation (Ubuntu)
-Open the terminal and install FastAPI:
-
-Copy code
-pip install fastapi
-Install the server on which FastAPI will run:
-
-arduino
-Copy code
-pip install "uvicorn[standard]"
-SQLAlchemy Installation (Ubuntu)
-Install SQLAlchemy:
-Copy code
-pip install sqlalchemy
-Creating the Website
-Backend:
 Follow these steps to create CRUD APIs for database operations:
 
 Set up the file structure as described in the project directory.
